@@ -30,11 +30,16 @@
 			class="hover:text-orange-800"
 			class:text-acm-orange={isActive("/resources")}>resources</a
 		>
-		<!--<a
+		<a
+			href="/projects"
+			class="hover:text-orange-800"
+			class:text-acm-orange={isActive("/projects")}>projects</a
+		>
+		<a
 			href="/talks"
 			class="hover:text-orange-800"
 			class:text-acm-orange={isActive("/talks")}>talks</a
-		>-->
+		>
 		<!--<a
 			href="/members"
 			class="hover:text-orange-800"

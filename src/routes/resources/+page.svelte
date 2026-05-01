@@ -96,12 +96,41 @@
 				<li>Google Developer Group on Campus.</li>
 			</ul>
 			<li>
+				<a href="https://osusec.org/">DAMSEC (Cyber Security Club)</a>
+			</li>
+			<ul>
+				<li>Meets every Wednesday 6-8pm in Kelley 1003.</li>
+			</ul>
+			<li><a href="https://osusec.org/wicys/">WiCyS</a></li>
+			<ul>
+				<li>Meets Tuesdays 6-7pm in KEC 1005</li>
+			</ul>
+			<li>
+				<a href="https://www.osu-ai.club/"
+					>Artificial ‎ Intelligence Club @ OSU</a
+				>
+			</li>
+			<ul>
+				<li>Meets every Wednesday 6-7pm KEC 1001.</li>
+			</ul>
+			<li>
 				<a href="https://discord.gg/j9pW3TANhu"
 					>Oregon State CS Discord</a
 				>
 			</li>
 			<ul>
 				<li>The unofficial OSU EECS discord server.</li>
+			</ul>
+			<li>
+				<a href="https://discord.gg/Xh7J3HTvuE"
+					>Embedded Systems Design Club</a
+				>
+			</li>
+			<ul>
+				<li>
+					If you like software and hardware the Embedded Systems
+					Design Club is for you.
+				</li>
 			</ul>
 		</ul>
 		<h2>Outside Learning Resources</h2>

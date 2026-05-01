@@ -1,6 +1,6 @@
 <script lang="ts">
 	import "../../syntax/catpuccin.css";
-	let { children, title, author, presenter, desc, date, video } = $props();
+	let { children, title, author, desc, date, video } = $props();
 	let parsedDate = new Date(date);
 	let monthNames = [
 		"January",

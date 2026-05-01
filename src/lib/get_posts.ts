@@ -1,18 +1,50 @@
-<script lang="ts">
-	const paths = import.meta.glob("/src/routes/talks/**/*.md", {
-		eager: true,
+const paths = import.meta.glob("/src/routes/talks/**/*.md", {
+	eager: true,
+});
+
+const formatter = new Intl.DateTimeFormat("en-US", { month: "long" });
+
+type Post = {
+	date: string;
+	href: string;
+	title: string;
+	author: string;
+	desc: string;
+	video?: string;
+};
+
+
+
+export function getPosts(): Post[] {
+	const posts: Post[] = [];
+	for (const path in paths) {
+		const file: any = paths[path];
+		let post = {
+			...file.metadata,
+			href: path.replaceAll("+page.md", "").replaceAll("/src/routes", ""),
+		};
+		posts.push(post);
+	}
+	posts.sort((a, b): number => {
+		let a_date = new Date(a.date);
+		let b_date = new Date(b.date);
+		if (a_date.getDate() == b_date.getDate()) {
+			return 0;
+		} else if (a_date.getDate() < b_date.getDate()) {
+			// b is newer therefore return positive
+			return 1;
+		} else {
+			// a is newer therefore return negative
+			return -1;
+		}
 	});
+	return posts
 
-	const formatter = new Intl.DateTimeFormat("en-US", { month: "long" });
+}
 
-	type Post = {
-		date: string;
-		href: string;
-		title: string;
-		author: string;
-		desc: string;
-		video?: string;
-	};
+
+
+export function getPostsByMonth(): Post[][] {
 
 	const posts: Post[] = [];
 
@@ -64,29 +96,13 @@
 			return -1;
 		}
 	});
-</script>
+	let in_order = [];
+	for (const k of keys) {
+		in_order.push(buckets[k])
+	}
 
-<svelte:head>
-	<title>Resources: acm@osu</title>
-	<meta name="description" content="" />
-	<meta property="og:title" content="" />
-	<meta property="og:type" content="article" />
-	<meta property="og:description" content="" />
-</svelte:head>
-<article class="w-full flex flex-col items-center">
-	<header
-		class="bg-acm-yellow text-white flex flex-col w-full lg:p-10 lg:px-20 p-5"
-	>
-		<h1 class="text-7xl font-extrabold text-center mt-8">Talks</h1>
-	</header>
-	<div
-		class="prose prose-xl max-w-[50em] prose-headings:mt-0 p-5 lg:p-0 lg:py-8"
-	>
-		{#each keys as k}
-			<h3>{k}</h3>
-			{#each buckets[k] as post}
-				<p>{post.date} - <a href={post.href}>{post.title}</a></p>
-			{/each}
-		{/each}
-	</div>
-</article>
+	return in_order;
+}
+
+
+

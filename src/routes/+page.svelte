@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { getPosts } from "$lib/get_posts";
 	let about_str =
-		"At ACM we prepare the next generation of top tier engineers, hackers, and builders";
+		"At ACM we prepare the next generation of top tier engineers, builders, and developers";
 	let about_str_rendered = "";
 	let i = 0;
 	let delay = 35;
@@ -12,6 +13,12 @@
 		}
 	}
 	setTimeout(timeoutFn, delay);
+
+	let posts = getPosts();
+	console.log(posts);
+	let last3Posts =
+		posts.length >= 3 ? posts.slice(0, 4) : posts.slice(0, posts.length);
+	console.log(last3Posts);
 </script>
 
 <svelte:head>
@@ -58,28 +65,35 @@
 			with hands-on support.
 		</p>
 		<h3 class="text-4xl font-heading font-extrabold">
-			meetings: <br />thursdays @ 6pm KEC 1003
+			meetings: <br />thursdays @ 6pm KEC 1001
 		</h3>
 	</div>
-	<div class="lg:w-1/2">
+	<!--<div class="lg:w-1/2">
 		<div class="w-full p-8 lg:p-0 aspect-video">
 			<img src="images/7.jpg" />
 		</div>
-	</div>
-	<!--<div class="lg:w-1/2">
+	</div>-->
+	<div class="lg:w-1/2">
 		<h3 class="text-white text-6xl font-extrabold mb-8">recent talks</h3>
 		<div class="bg-white font-mono text-2xl p-4">
-			{#each [1, 2, 3] as _}
+			{#each last3Posts as post}
 				<div class="flex items-center gap-2">
-					<div class="bg-gray-400 aspect-square h-[2.4em]"></div>
 					<div>
-						<h4>Talk Title</h4>
-						<p>labore quis magna consequat ad asdlfjasdflk ...</p>
+						<h4>
+							<a
+								href={post.href}
+								class="underline hover:font-bold"
+								>{post.title}</a
+							>
+						</h4>
+						<p class="text-xl">
+							{post.desc}
+						</p>
 					</div>
 				</div>
 			{/each}
 		</div>
-	</div>-->
+	</div>
 </div>
 
 <div class="bg-acm-yellow lg:flex p-10 gap-8" id="icpc">
