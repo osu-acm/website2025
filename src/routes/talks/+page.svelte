@@ -3,7 +3,12 @@
 		eager: true,
 	});
 
-	const formatter = new Intl.DateTimeFormat("en-US", { month: "long" });
+	const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "long" });
+	const dateFormatter = new Intl.DateTimeFormat("en-US", {
+		month: "short",
+		day: "numeric",
+		year: "numeric",
+	});
 
 	type Post = {
 		date: string;
@@ -14,19 +19,22 @@
 		video?: string;
 	};
 
-	const posts: Post[] = [];
-
 	const buckets: { [id: string]: Post[] } = {};
 
 	for (const path in paths) {
 		const file: any = paths[path];
+		const metadata = file.metadata;
+
+		if (!metadata?.date || !metadata?.title) {
+			continue;
+		}
+
 		let post = {
-			...file.metadata,
+			...metadata,
 			href: path.replaceAll("+page.md", "").replaceAll("/src/routes", ""),
 		};
-		posts.push(post);
-		let date = new Date(file.metadata.date);
-		let month = formatter.format(date);
+		let date = new Date(metadata.date);
+		let month = monthFormatter.format(date);
 		let year: Number = date.getFullYear();
 		if (Object.hasOwn(buckets, `${month} ${year}`)) {
 			buckets[`${month} ${year}`].push(post);
@@ -39,54 +47,93 @@
 		buckets[key].sort((a, b): number => {
 			let a_date = new Date(a.date);
 			let b_date = new Date(b.date);
-			if (a_date.getDate() == b_date.getDate()) {
-				return 0;
-			} else if (a_date.getDate() < b_date.getDate()) {
-				// b is newer therefore return positive
-				return 1;
-			} else {
-				// a is newer therefore return negative
-				return -1;
-			}
+			return b_date.getTime() - a_date.getTime();
 		});
 	}
 
 	let keys = Object.keys(buckets).toSorted((a: string, b: string): number => {
 		let a_date = new Date(a);
 		let b_date = new Date(b);
-		if (a_date.getDate() == b_date.getDate()) {
-			return 0;
-		} else if (a_date.getDate() < b_date.getDate()) {
-			// b is newer therefore return positive
-			return 1;
-		} else {
-			// a is newer therefore return negative
-			return -1;
-		}
+		return b_date.getTime() - a_date.getTime();
 	});
 </script>
 
 <svelte:head>
-	<title>Resources: acm@osu</title>
-	<meta name="description" content="" />
-	<meta property="og:title" content="" />
-	<meta property="og:type" content="article" />
-	<meta property="og:description" content="" />
+	<title>Talks | acm@osu</title>
+	<meta
+		name="description"
+		content="Talks, workshops, and technical writeups from acm@osu."
+	/>
 </svelte:head>
-<article class="w-full flex flex-col items-center">
-	<header
-		class="bg-acm-yellow text-white flex flex-col w-full lg:p-10 lg:px-20 p-5"
-	>
-		<h1 class="text-7xl font-extrabold text-center mt-8">Talks</h1>
+
+<article class="min-h-screen bg-white">
+	<header class="bg-acm-yellow px-8 py-16 text-white md:px-12">
+		<div class="mx-auto max-w-6xl">
+			<p class="mb-3 font-mono text-xl">workshops / talks / writeups</p>
+			<h1 class="font-heading text-7xl font-extrabold md:text-8xl">
+				{"{talks}"}
+			</h1>
+			<p class="mt-6 max-w-3xl font-mono text-2xl">
+				Catch up on ACM workshops, company talks, career prep, and
+				technical sessions.
+			</p>
+		</div>
 	</header>
-	<div
-		class="prose prose-xl max-w-[50em] prose-headings:mt-0 p-5 lg:p-0 lg:py-8"
-	>
-		{#each keys as k}
-			<h3>{k}</h3>
-			{#each buckets[k] as post}
-				<p>{post.date} - <a href={post.href}>{post.title}</a></p>
-			{/each}
-		{/each}
-	</div>
+
+	<section class="px-8 py-12 md:px-12">
+		<div class="mx-auto max-w-6xl">
+			{#if keys.length === 0}
+				<div class="bg-acm-orange p-6 font-mono text-xl text-white">
+					No published talk posts yet.
+				</div>
+			{/if}
+
+			<div class="space-y-12">
+				{#each keys as k}
+					<section>
+						<h2
+							class="mb-6 font-heading text-5xl font-extrabold text-acm-orange"
+						>
+							{k}
+						</h2>
+						<div class="grid gap-6 lg:grid-cols-2">
+							{#each buckets[k] as post}
+								<a
+									href={post.href}
+									class="block bg-white p-6 transition hover:-translate-y-1 hover:bg-yellow-50"
+								>
+									<p
+										class="font-mono text-sm font-bold text-acm-blue"
+									>
+										{dateFormatter.format(
+											new Date(post.date),
+										)}
+									</p>
+									<h3
+										class="mt-2 font-heading text-3xl font-extrabold text-black"
+									>
+										{post.title}
+									</h3>
+									{#if post.desc}
+										<p
+											class="mt-3 font-mono text-lg text-black"
+										>
+											{post.desc}
+										</p>
+									{/if}
+									{#if post.author}
+										<p
+											class="mt-4 font-mono text-sm font-bold text-acm-orange"
+										>
+											By {post.author}
+										</p>
+									{/if}
+								</a>
+							{/each}
+						</div>
+					</section>
+				{/each}
+			</div>
+		</div>
+	</section>
 </article>

@@ -19,8 +19,14 @@ export function getPosts(): Post[] {
 	const posts: Post[] = [];
 	for (const path in paths) {
 		const file: any = paths[path];
+		const metadata = file.metadata;
+
+		if (!metadata?.date || !metadata?.title) {
+			continue;
+		}
+
 		let post = {
-			...file.metadata,
+			...metadata,
 			href: path.replaceAll("+page.md", "").replaceAll("/src/routes", ""),
 		};
 		posts.push(post);
@@ -28,15 +34,7 @@ export function getPosts(): Post[] {
 	posts.sort((a, b): number => {
 		let a_date = new Date(a.date);
 		let b_date = new Date(b.date);
-		if (a_date.getDate() == b_date.getDate()) {
-			return 0;
-		} else if (a_date.getDate() < b_date.getDate()) {
-			// b is newer therefore return positive
-			return 1;
-		} else {
-			// a is newer therefore return negative
-			return -1;
-		}
+		return b_date.getTime() - a_date.getTime();
 	});
 	return posts
 
@@ -52,12 +50,18 @@ export function getPostsByMonth(): Post[][] {
 
 	for (const path in paths) {
 		const file: any = paths[path];
+		const metadata = file.metadata;
+
+		if (!metadata?.date || !metadata?.title) {
+			continue;
+		}
+
 		let post = {
-			...file.metadata,
+			...metadata,
 			href: path.replaceAll("+page.md", "").replaceAll("/src/routes", ""),
 		};
 		posts.push(post);
-		let date = new Date(file.metadata.date);
+		let date = new Date(metadata.date);
 		let month = formatter.format(date);
 		let year: Number = date.getFullYear();
 		if (Object.hasOwn(buckets, `${month} ${year}`)) {
@@ -71,30 +75,14 @@ export function getPostsByMonth(): Post[][] {
 		buckets[key].sort((a, b): number => {
 			let a_date = new Date(a.date);
 			let b_date = new Date(b.date);
-			if (a_date.getDate() == b_date.getDate()) {
-				return 0;
-			} else if (a_date.getDate() < b_date.getDate()) {
-				// b is newer therefore return positive
-				return 1;
-			} else {
-				// a is newer therefore return negative
-				return -1;
-			}
+			return b_date.getTime() - a_date.getTime();
 		});
 	}
 
 	let keys = Object.keys(buckets).toSorted((a: string, b: string): number => {
 		let a_date = new Date(a);
 		let b_date = new Date(b);
-		if (a_date.getDate() == b_date.getDate()) {
-			return 0;
-		} else if (a_date.getDate() < b_date.getDate()) {
-			// b is newer therefore return positive
-			return 1;
-		} else {
-			// a is newer therefore return negative
-			return -1;
-		}
+		return b_date.getTime() - a_date.getTime();
 	});
 	let in_order = [];
 	for (const k of keys) {

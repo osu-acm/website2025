@@ -6,10 +6,17 @@
 	<meta property="og:description" content="" />
 </svelte:head>
 <article class="w-full flex flex-col items-center">
-	<header
-		class="bg-acm-yellow text-white flex flex-col w-full lg:p-10 lg:px-20 p-5"
-	>
-		<h1 class="text-7xl font-extrabold text-center mt-8">Resources</h1>
+	<header class="bg-acm-yellow px-8 py-16 text-white md:px-12 w-full">
+		<div class="mx-auto max-w-6xl">
+			<p class="mb-3 font-mono text-xl">links / guides / community</p>
+			<h1 class="font-heading text-7xl font-extrabold md:text-8xl">
+				{"{resources}"}
+			</h1>
+			<p class="mt-6 max-w-3xl font-mono text-2xl">
+				Helpful club resources, OSU CS community links, and learning
+				materials we recommend.
+			</p>
+		</div>
 	</header>
 	<div
 		class="prose prose-xl max-w-[50em] prose-headings:mt-0 p-5 lg:p-0 lg:py-8"
