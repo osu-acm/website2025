@@ -5,6 +5,7 @@
 		initials: string;
 		color: string;
 		image?: string;
+		website?: string;
 	};
 
 	const leaders: Leader[] = [
@@ -14,12 +15,14 @@
 			initials: "LW",
 			color: "#F37420",
 			image: "/people/lukas.jpg",
+			website: "https://lukaswerner.com",
 		},
 		{
 			name: "Oliver Flood",
 			role: "Vice-President",
 			initials: "OF",
 			color: "#209FF3",
+			website: "https://oliverflood.com",
 		},
 		{
 			name: "Jacob Weiner",
@@ -118,7 +121,18 @@
 				/>
 				<div class="p-6">
 					<h2 class="font-heading text-3xl font-extrabold text-black">
-						{leader.name}
+						{#if leader.website}
+							<a
+								href={leader.website}
+								target="_blank"
+								rel="noreferrer"
+								class="transition hover:text-acm-orange"
+							>
+								{leader.name}
+							</a>
+						{:else}
+							{leader.name}
+						{/if}
 					</h2>
 					<p class="mt-2 font-mono text-xl text-acm-orange">
 						{leader.role}
