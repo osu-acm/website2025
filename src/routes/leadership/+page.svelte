@@ -22,6 +22,7 @@
 			role: "Vice-President",
 			initials: "OF",
 			color: "#209FF3",
+			image: "/people/oliver.jpg",
 			website: "https://oliverflood.com",
 		},
 		{
