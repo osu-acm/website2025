@@ -70,7 +70,9 @@
 	<header class="bg-acm-yellow px-8 py-16 text-white md:px-12">
 		<div class="mx-auto max-w-6xl">
 			<p class="mb-3 font-mono text-xl">workshops / talks / writeups</p>
-			<h1 class="font-heading text-7xl font-extrabold md:text-8xl">
+			<h1
+				class="whitespace-nowrap font-heading text-[clamp(2.25rem,12vw,4.5rem)] font-extrabold leading-none md:text-8xl"
+			>
 				{"{talks}"}
 			</h1>
 			<p class="mt-6 max-w-3xl font-mono text-2xl">

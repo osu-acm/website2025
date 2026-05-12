@@ -56,7 +56,11 @@
 
 <div class="bg-acm-orange lg:flex p-10 gap-8" id="learn">
 	<div class="text-white lg:w-1/2">
-		<h1 class="text-8xl font-heading font-extrabold mb-8">{"{learn}"}</h1>
+		<h1
+			class="mb-8 whitespace-nowrap font-heading text-[clamp(2.25rem,12vw,6rem)] font-extrabold leading-none"
+		>
+			{"{learn}"}
+		</h1>
 		<p class="text-2xl font-mono mb-4">
 			acm@osu is a student-run club that fosters a community of passionate
 			engineers. We host a number of different events throughout each term
@@ -103,7 +107,11 @@
 		</div>
 	</div>
 	<div class="text-white lg:w-1/2">
-		<h1 class="text-8xl font-heading font-extrabold mb-8">{"{icpc}"}</h1>
+		<h1
+			class="mb-8 whitespace-nowrap font-heading text-[clamp(2.25rem,12vw,6rem)] font-extrabold leading-none"
+		>
+			{"{icpc}"}
+		</h1>
 		<p class="text-2xl font-mono mb-4">
 			Whether you're an experienced competitive programmer or just wanting
 			to improve your coding skills, we've got something for you! We meet
@@ -118,7 +126,9 @@
 
 <div class="bg-acm-orange lg:flex p-10 gap-8" id="career">
 	<div class="lg:w-1/2 text-white">
-		<h1 class="text-8xl font-heading font-extrabold mb-8">
+		<h1
+			class="mb-8 whitespace-nowrap font-heading text-[clamp(2.25rem,12vw,6rem)] font-extrabold leading-none"
+		>
 			{"{career}"}
 		</h1>
 		<p class="text-2xl font-mono mb-4">

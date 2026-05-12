@@ -101,7 +101,9 @@
 
 <section class="bg-acm-orange px-8 py-16 text-white md:px-12">
 	<div class="mx-auto max-w-6xl">
-		<h1 class="mb-4 font-heading text-6xl font-extrabold md:text-8xl">
+		<h1
+			class="mb-4 whitespace-nowrap font-heading text-[clamp(2.25rem,12vw,4.5rem)] font-extrabold leading-none md:text-8xl"
+		>
 			{"{leadership}"}
 		</h1>
 		<p class="max-w-3xl font-mono text-2xl">
