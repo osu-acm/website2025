@@ -68,6 +68,7 @@
 			role: "Community Outreach Officer",
 			initials: "AS",
 			color: "#F37420",
+			image: "/people/avabella.jpg",
 		},
 		{
 			name: "Samuel Jamieson",
