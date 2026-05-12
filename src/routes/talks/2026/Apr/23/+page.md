@@ -8,6 +8,6 @@ date: 2026/4/23
 <script>
 	import Slides from "$lib/Slides.svelte";
 </script>
-
 <Slides src="/slides/2026 Lightning Talks - Intro To Research.pdf" title="Intro To Research" />
 <Slides src="/slides/2026 Lightning Talks - Command Line.pdf" title="Why You Should Use the Command Line" />
+<Slides src="/slides/2026 Lightning Talks - Gemini.pdf" title="Midterms with NotebookLM" />

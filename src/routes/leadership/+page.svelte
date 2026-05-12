@@ -47,6 +47,7 @@
 			name: "Will Teyema",
 			role: "Competitive Programming Officer",
 			initials: "WT",
+			image: "/people/will.jpg",
 			color: "#209FF3",
 		},
 		{
