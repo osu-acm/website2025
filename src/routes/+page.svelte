@@ -69,7 +69,7 @@
 			with hands-on support.
 		</p>
 		<h3 class="text-4xl font-heading font-extrabold">
-			meetings: <br />thursdays @ 6pm KEC 1001
+			meetings: <br />thursdays @ 6pm KEC 1003
 		</h3>
 	</div>
 	<!--<div class="lg:w-1/2">
