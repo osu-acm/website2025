@@ -5,6 +5,7 @@
 		initials: string;
 		color: string;
 		image?: string;
+		email?: string;
 		website?: string;
 	};
 
@@ -13,6 +14,7 @@
 			name: "Lukas Werner",
 			role: "President",
 			initials: "LW",
+			email: "wernerlu@oregonstate.edu",
 			color: "#F37420",
 			image: "/people/lukas.jpg",
 			website: "https://lukaswerner.com",
@@ -68,6 +70,7 @@
 			role: "Community Outreach Officer",
 			initials: "AS",
 			color: "#F37420",
+			email: "schroeav@oregonstate.edu",
 			image: "/people/avabella.jpg",
 		},
 		{
@@ -141,6 +144,34 @@
 					</h2>
 					<p class="mt-2 font-mono text-xl text-acm-orange">
 						{leader.role}
+						<span class="flex gap-1 py-1">
+							{#if leader.email}
+								<a
+									href={`mailto:${leader.email}`}
+									class="text-black hover:underline"
+								>
+									<img
+										class="h-[1em]"
+										src="/mail.svg"
+										alt="email icon"
+									/>
+								</a>
+							{/if}
+							{#if leader.website}
+								<a
+									href={leader.website}
+									target="_blank"
+									rel="noreferrer"
+									class="transition"
+								>
+									<img
+										class="h-[1em]"
+										src="/globe.svg"
+										alt="internet icon"
+									/>
+								</a>
+							{/if}
+						</span>
 					</p>
 				</div>
 			</article>
