@@ -2,6 +2,17 @@
 	type Leader = {
 		name: string;
 		role: string;
+		roles?: string[];
+		initials: string;
+		color: string;
+		image?: string;
+		email?: string;
+		website?: string;
+	};
+	type FormerLeader = {
+		name: string;
+		years: string;
+		roles: string[];
 		initials: string;
 		color: string;
 		image?: string;
@@ -20,12 +31,13 @@
 			website: "https://lukaswerner.com",
 		},
 		{
-			name: "Oliver Flood",
+			name: "Avabella Schroeder",
 			role: "Vice-President",
-			initials: "OF",
-			color: "#209FF3",
-			image: "/people/oliver.jpg",
-			website: "https://oliverflood.com",
+			roles: ["Vice-President", "Community Outreach Officer"],
+			initials: "AS",
+			color: "#F37420",
+			email: "schroeav@oregonstate.edu",
+			image: "/people/avabella.jpg",
 		},
 		{
 			name: "Jacob Weiner",
@@ -34,56 +46,105 @@
 			color: "#19C25C",
 		},
 		{
-			name: "Aadarsh Rajput",
-			role: "Webmaster",
-			initials: "AR",
-			color: "#F3C020",
-		},
-		{
-			name: "Alex Nguyen",
-			role: "Online Officer",
-			initials: "AN",
-			color: "#F37420",
-		},
-		{
-			name: "Will Teyema",
-			role: "Competitive Programming Officer",
+			name: "William Tu",
+			role: "Head Competitive Officer",
 			initials: "WT",
-			image: "/people/will.jpg",
 			color: "#209FF3",
 		},
 		{
-			name: "Kai Black",
-			role: "Competitive Programming Officer",
-			initials: "KB",
+			name: "Isaac Tucknott",
+			role: "Competitive Officer",
+			initials: "IT",
 			color: "#19C25C",
 		},
 		{
-			name: "Peter Mora-Stevens",
+			name: "Mehul Munankarmi",
 			role: "Career Officer",
-			initials: "PM",
+			initials: "MM",
 			color: "#F3C020",
-			image: "/people/peter.jpg",
+			image: "/people/mehul.jpg",
 		},
 		{
-			name: "Avabella Schroeder",
+			name: "Cal Corcoran",
+			role: "Graphic Design Officer",
+			initials: "CC",
+			color: "#19C25C",
+		},
+		{
+			name: "Jak Tynshimov",
 			role: "Community Outreach Officer",
-			initials: "AS",
-			color: "#F37420",
-			email: "schroeav@oregonstate.edu",
-			image: "/people/avabella.jpg",
+			initials: "JT",
+			color: "#209FF3",
+			image: "/people/jak.jpg",
+		},
+		{
+			name: "Leonidas Sallos",
+			role: "Online Officer",
+			initials: "LS",
+			color: "#F3C020",
+		},
+	];
+
+	const former_leadership: FormerLeader[] = [
+		{
+			name: "Oliver Flood",
+			roles: ["Vice-President"],
+			initials: "OF",
+			color: "#209FF3",
+			image: "/people/oliver.jpg",
+			website: "https://oliverflood.com",
+			years: "2025-2026",
 		},
 		{
 			name: "Samuel Jamieson",
-			role: "Community Outreach Officer",
+			roles: ["Community Outreach Officer"],
 			initials: "SJ",
 			color: "#209FF3",
+			years: "2025-2026",
 		},
 		{
 			name: "Skyelar Bala",
-			role: "Graphics Design Officer",
+			roles: ["Graphics Design Officer"],
 			initials: "SB",
 			color: "#19C25C",
+			years: "2025-2026",
+		},
+		{
+			name: "Aadarsh Rajput",
+			roles: ["Webmaster"],
+			initials: "AR",
+			color: "#F3C020",
+			years: "2025-2026",
+		},
+		{
+			name: "Alex Nguyen",
+			roles: ["Online Officer"],
+			initials: "AN",
+			color: "#F37420",
+			years: "2025-2026",
+		},
+		{
+			name: "Will Teyema",
+			roles: ["Competitive Programming Officer"],
+			initials: "WT",
+			image: "/people/will.jpg",
+			color: "#209FF3",
+			years: "2025-2026",
+		},
+		{
+			name: "Kai Black",
+			roles: ["Competitive Programming Officer"],
+			initials: "KB",
+			color: "#19C25C",
+			years: "2025-2026",
+		},
+		{
+			name: "Peter Mora-Stevens",
+			roles: ["Career Officer"],
+			initials: "PM",
+			color: "#F3C020",
+			image: "/people/peter.jpg",
+			years: "2025-2026",
 		},
 	];
 
