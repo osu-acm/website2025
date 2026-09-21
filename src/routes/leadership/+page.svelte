@@ -44,6 +44,7 @@
 			role: "Treasurer",
 			initials: "JW",
 			color: "#19C25C",
+			image: "/people/jacob.jpg",
 		},
 		{
 			name: "William Tu",
@@ -56,6 +57,7 @@
 			role: "Competitive Officer",
 			initials: "IT",
 			color: "#19C25C",
+			image: "/people/isaac.jpg",
 		},
 		{
 			name: "Mehul Munankarmi",
@@ -69,6 +71,7 @@
 			role: "Graphic Design Officer",
 			initials: "CC",
 			color: "#19C25C",
+			image: "/people/cal.jpg",
 		},
 		{
 			name: "Jak Tynshimov",
@@ -82,6 +85,7 @@
 			role: "Online Officer",
 			initials: "LS",
 			color: "#F3C020",
+			image: "/people/leonidas.jpg",
 		},
 	];
 
